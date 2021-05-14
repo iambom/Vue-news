@@ -1,7 +1,8 @@
 <template>
   <div>
     <p v-for="item in fetchedAsk">
-      <a :href="item.url">{{ item.title }}</a>
+      <router-link :to="`/item/${item.id}`">{{ item.title }}</router-link>
+      <!-- <a :href="item.url">{{ item.title }}</a> -->
       <small>{{ item.time_ago }} by {{ item.user }}</small>
     </p>
   </div>
@@ -13,9 +14,7 @@ import { mapState, mapGetters } from 'vuex';
 export default {
   computed: {
     //#4
-    ...mapGetters([
-      'fetchedAsk'
-    ])
+    ...mapGetters(['fetchedAsk'])
 
     //#3
     // ...mapGetters({

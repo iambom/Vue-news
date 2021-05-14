@@ -1,22 +1,20 @@
 <template>
   <div>
-    <div v-for="user in users">{{ user.domain }}</div>
+    <div v-for="item in jobs">{{ item.domain }}</div>
   </div>
 </template>
 
 <script>
-import { fetchJobsList } from '../api/index.js';
+import { mapState } from 'vuex';
 
 export default {
-  data() {
-    return {
-      users: [],
-    }
+  computed: {
+    ...mapState({
+      jobs: state => state.jobs
+    })
   },
   created() {
-    fetchJobsList()
-      .then(response => this.users = response.data)
-      .catch(error => console.log(error))
+    this.$store.dispatch('FETCH_JOBS')
   }
 }
 </script>

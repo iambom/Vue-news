@@ -5,6 +5,7 @@ export default {
         bus.$emit('start:spinner');
         this.$store.dispatch('FETCH_LIST', this.$route.name)
         .then(() => {
+            console.log("mixin");
           bus.$emit('end:spinner');
         })
         .catch((error) => {

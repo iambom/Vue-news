@@ -7,6 +7,7 @@ const config = {
 
 // 2. API 함수들을 정리
 function fetchList(pageName) {
+    console.log(pageName);
     return axios.get(`${config.baseUrl}/${pageName}/1.json`)
 }
 

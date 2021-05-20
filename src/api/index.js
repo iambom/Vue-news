@@ -10,13 +10,21 @@ function fetchList(pageName) {
     console.log(pageName);
     return axios.get(`${config.baseUrl}/${pageName}/1.json`)
 }
-
-function fetchUserInfo(username) {
-    return axios.get(`${config.baseUrl}/user/${username}.json`)
+// async await의 예외처리를 api 호출 시 적용
+async function fetchUserInfo(username) {
+    try {
+        return await axios.get(`${config.baseUrl}/user/${username}.json`)
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-function fetchItem(id) {
-    return axios.get(`${config.baseUrl}/item/${id}.json`)
+async function fetchItem(id) {
+    try {
+        return await axios.get(`${config.baseUrl}/item/${id}.json`);
+    } catch (error) {
+        console.log(error);
+    }
 }
 export {
     fetchUserInfo,
